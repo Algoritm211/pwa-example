@@ -8,11 +8,14 @@
 // You can also remove this file if you'd prefer not to use a
 // service worker, and the Workbox build step will be skipped.
 
+import localforage from 'localforage';
 import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate } from 'workbox-strategies';
+import {CreatePostDto} from "./dto/createPost.dto";
+import { store } from './indexedDBStorage';
 
 declare const self: ServiceWorkerGlobalScope;
 
@@ -78,3 +81,32 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+
+export type CreatePostRequest = {
+  url: string,
+  body: CreatePostDto,
+}
+
+self.addEventListener('fetch', async (e) => {
+  let clonedBody = await e.request.clone().json();
+
+  if (['POST', 'PUT'].includes(e.request.method)) {
+    const reqObj = {
+      url: e.request.url,
+      body: clonedBody,
+    }
+
+    const offlineRequests = await store.getItem<CreatePostRequest[]>('offlineRequests')
+    if (!offlineRequests) {
+      await store.setItem('offlineRequests', [reqObj]);
+      console.log('Object was set');
+      return;
+    }
+    offlineRequests.push(reqObj);
+    await store.setItem('offlineRequests', offlineRequests);
+    console.log('Store was updated')
+  }
+
+  console.log(e.request)
+  console.log(`[Service Worker] Fetched resource ${e.request.url}`);
+});

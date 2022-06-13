@@ -1,10 +1,11 @@
 import {useMutation, useQueryClient} from "react-query";
-import {createPost, Post} from "../api/createPost";
+import {createPost} from "../api/createPost";
+import {CreatePostDto} from "../dto/createPost.dto";
 
 const useCreatePost = () => {
   const queryClient = useQueryClient();
   return useMutation(
-    (post: Omit<Post, 'id'>) => createPost(post),
+    (post: CreatePostDto) => createPost(post),
     {
       onSuccess(post) {
         console.log(post)
@@ -16,7 +17,7 @@ const useCreatePost = () => {
 export const useAddPost = () => {
   const {data: post, mutateAsync, isLoading} = useCreatePost();
 
-  const addPost = (post: Omit<Post, 'id'>) => {
+  const addPost = (post: CreatePostDto) => {
     return mutateAsync(post);
   }
 
