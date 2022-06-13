@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.d3c2e767.css",
-    "main.js": "/react-gh-pages/static/js/main.617cb242.js",
-    "service-worker.js": "/react-gh-pages/service-worker.js",
-    "index.html": "/react-gh-pages/index.html",
-    "main.d3c2e767.css.map": "/react-gh-pages/static/css/main.d3c2e767.css.map",
-    "main.617cb242.js.map": "/react-gh-pages/static/js/main.617cb242.js.map"
+    "main.css": "/pwa-example/static/css/main.d3c2e767.css",
+    "main.js": "/pwa-example/static/js/main.81191b5c.js",
+    "service-worker.js": "/pwa-example/service-worker.js",
+    "index.html": "/pwa-example/index.html",
+    "main.d3c2e767.css.map": "/pwa-example/static/css/main.d3c2e767.css.map",
+    "main.81191b5c.js.map": "/pwa-example/static/js/main.81191b5c.js.map"
   },
   "entrypoints": [
     "static/css/main.d3c2e767.css",
-    "static/js/main.617cb242.js"
+    "static/js/main.81191b5c.js"
   ]
 }
