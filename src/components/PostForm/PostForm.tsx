@@ -13,8 +13,9 @@ const PostForm: React.FC = () => {
   const {post, addPost} = useAddPost();
 
   const onPostSubmit = async (values: FormValues) => {
-    await addPost(values);
+    const newPost = await addPost(values);
     console.log('success');
+    alert(JSON.stringify(newPost, null, 2))
   }
   return (
     <Form<FormValues>
@@ -51,9 +52,6 @@ const PostForm: React.FC = () => {
             <button type="submit">
               Submit form
             </button>
-            <pre>
-              {JSON.stringify(post, null, 2)}
-            </pre>
           </form>
         )
       }}

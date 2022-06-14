@@ -8,7 +8,6 @@
 // You can also remove this file if you'd prefer not to use a
 // service worker, and the Workbox build step will be skipped.
 
-import localforage from 'localforage';
 import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
@@ -88,9 +87,12 @@ export type CreatePostRequest = {
 }
 
 self.addEventListener('fetch', async (e) => {
-  let clonedBody = await e.request.clone().json();
-
+  if (navigator.onLine) {
+    console.log('Online')
+    return;
+  }
   if (['POST', 'PUT'].includes(e.request.method)) {
+    let clonedBody = await e.request.clone().json()
     const reqObj = {
       url: e.request.url,
       body: clonedBody,
@@ -107,6 +109,5 @@ self.addEventListener('fetch', async (e) => {
     console.log('Store was updated')
   }
 
-  console.log(e.request)
   console.log(`[Service Worker] Fetched resource ${e.request.url}`);
 });
