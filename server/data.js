@@ -1,4 +1,6 @@
 const { faker } = require('@faker-js/faker');
+const path = require('path');
+const fs = require('fs');
 
 const posts = [
   {
@@ -15,4 +17,10 @@ const posts = [
   }
 ]
 
-module.exports = {posts}
+
+const photos = fs.readdirSync(path.join(__dirname, 'photos'))
+  .map(data => path.join(__dirname,`${data}`))
+  .map(data => ({url: data}))
+
+module.exports = {posts, photos}
+

@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@faker-js/faker": "^7.3.0",
+    "@tanstack/query-async-storage-persister": "^4.0.10",
     "@tanstack/query-sync-storage-persister": "^4.0.10",
     "@tanstack/react-query": "^4.0.10",
     "@tanstack/react-query-devtools": "^4.0.10",
@@ -16,8 +17,10 @@
     "@types/node": "^16.11.39",
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
+    "axios": "^0.27.2",
     "cors": "^2.8.5",
     "express": "^4.18.1",
+    "express-fileupload": "^1.4.0",
     "final-form": "^4.20.7",
     "localforage": "^1.10.0",
     "react": "^18.1.0",

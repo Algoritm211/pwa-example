@@ -1,4 +1,5 @@
 
 export enum QueryKeys {
-  posts = 'posts'
+  posts = 'posts',
+  photos = 'photos'
 }

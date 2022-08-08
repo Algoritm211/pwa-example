@@ -1,9 +1,12 @@
+import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 import {MutationCache, QueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import {store} from "../indexedDBStorage";
 
-export const persister = createSyncStoragePersister({
-  storage: window.localStorage,
+export const persister = createAsyncStoragePersister({
+  // @ts-ignore
+  storage: store,
 });
 
 export const queryClient = new QueryClient({
