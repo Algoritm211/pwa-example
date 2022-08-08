@@ -1,7 +1,0 @@
-.container {
-  display: grid;
-  max-width: 1024px;
-  place-items: center;
-  margin: 0 auto;
-  padding: 42px 32px;
-}

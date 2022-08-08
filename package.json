@@ -4,6 +4,11 @@
   "homepage": "https://algoritm211.github.io/pwa-example",
   "private": true,
   "dependencies": {
+    "@faker-js/faker": "^7.3.0",
+    "@tanstack/query-sync-storage-persister": "^4.0.10",
+    "@tanstack/react-query": "^4.0.10",
+    "@tanstack/react-query-devtools": "^4.0.10",
+    "@tanstack/react-query-persist-client": "^4.0.10",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -11,12 +16,14 @@
     "@types/node": "^16.11.39",
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
     "final-form": "^4.20.7",
     "localforage": "^1.10.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-final-form": "^6.5.9",
-    "react-query": "^3.39.1",
+    "react-hot-toast": "^2.3.0",
     "react-scripts": "5.0.1",
     "serve": "^13.0.2",
     "typescript": "^4.7.3",
@@ -28,7 +35,8 @@
     "start": "set HTTPS=true && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "concurrently \"npm run start\" \"nodemon server/index.js\""
   },
   "eslintConfig": {
     "extends": [
@@ -49,6 +57,11 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^4.0.0"
+    "autoprefixer": "^10.4.8",
+    "concurrently": "^7.3.0",
+    "gh-pages": "^4.0.0",
+    "nodemon": "^2.0.19",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.8"
   }
 }
